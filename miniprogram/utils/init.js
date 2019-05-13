@@ -140,8 +140,6 @@ function get_content() { //初始化文章
                 console.error('add history error：', err)
               }
             })
-
-
           },
           fail(res) { //readFile error
             console.log(res.errMsg);
@@ -160,24 +158,7 @@ var init = function() {
   getDicts('CET6', assign);
   getDicts('IELTS', assign);
 
-  getEssays(get_content);
+  // getEssays(get_content);
 }
 
 module.exports = init;
-
-
-// function cloud_set(filename, wordList) {
-//   wx.cloud.callFunction({ //调用云函数init
-//     name: 'init',
-//     data: {
-//       words: wordList,
-//       tags: filename
-//     },
-//     success: res => {
-//       console.log('[init] success: ', res.result)
-//     },
-//     fail: err => {
-//       console.error('[init] error: ', err)
-//     }
-//   })
-// }

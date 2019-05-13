@@ -1,16 +1,13 @@
-var dictWords = new Map();    //词典
-var essays = new Array();     //存储文章
 var uniqueUserWords;
 
+const app = getApp()
  
 function get_users(his) {
-  
   var sen;
   var userWords = new Array();
 
   for (let i = 0; i < his.length; i++) {
-    sen = his[i].result;
-    var senWords = sen.split(" ");
+    var senWords = his[i].split(" ");
 
     for (let j = 0; j < senWords.length; j++) {
       userWords.push(senWords[j])
@@ -19,29 +16,28 @@ function get_users(his) {
   }
 }
 
-
-
 function unique(arr) {         //去重
   return Array.from(new Set(arr))
 }
 
 
 
-var recommand = function (his) {
+var recommand = function (queryList) {
 
-  get_users(his);
+  get_users(queryList);
+
 
 
   var l1=0, l2=0, l3=0;      //统计用户搜索历史中不同级别单词数目
   for (let k=0; k<uniqueUserWords.length; k++) {
 
-    if (dictWords[uniqueUserWords[k]] == 1){
+    if (app.globalData.dicts[uniqueUserWords[k].strm()] == 1){
       l1++;
     }
-    else if (dictWords[uniqueUserWords[k]] == 2){
+    else if (dictWords[uniqueUserWords[k].strm()] == 2){
       l2++;
     }
-    else if (dictWords[uniqueUserWords[k]] == 3) {
+    else if (dictWords[uniqueUserWords[k].strm()] == 3) {
       l3++;
     }
     else {
@@ -49,9 +45,27 @@ var recommand = function (his) {
     }
   }
 
-  get_essays();
+  console.log('times:' + l1 + ' ' + l2 + ' ' + l3)
+
+  // get_essays();
 
 }
 
 
 module.exports = recommand;
+
+// function cloud_set(filename, wordList) {
+//   wx.cloud.callFunction({ //调用云函数init
+//     name: 'init',
+//     data: {
+//       words: wordList,
+//       tags: filename
+//     },
+//     success: res => {
+//       console.log('[init] success: ', res.result)
+//     },
+//     fail: err => {
+//       console.error('[init] error: ', err)
+//     }
+//   })
+// }
