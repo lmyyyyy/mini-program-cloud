@@ -14,7 +14,28 @@ Page({
 
 
   onLoad() {
+    
     console.log('reading: ' + app.globalData.openid)
+
+    const db = wx.cloud.database()               //查询搜索历史
+    db.collection('users').where({
+      _openid: app.globalData.openid
+    }).get({
+      success: res => {
+        var tempQueryList = []
+        for (var i = 0; i < res.data.length; i++) {
+          tempQueryList.push(res.data[i].result)
+        }
+        this.setData({
+          queryList: tempQueryList
+        })
+        recommand(this.data.queryList)
+
+      },
+      fail: err => {
+        console.error('query error：', err)
+      }
+    })
     
     // console.log(app.globalData.dicts['exhaustible'])
    },
@@ -22,25 +43,7 @@ Page({
 
 
    onShow() {
-     const db = wx.cloud.database()               //查询搜索历史
-     db.collection('users').where({
-       _openid: app.globalData.openid
-     }).get({
-       success: res => {
-         var tempQueryList = []
-         for (var i = 0; i < res.data.length; i++) {
-           tempQueryList.push(res.data[i].result)
-         }
-         this.setData({
-           queryList: tempQueryList
-         })
-         recommand(this.data.queryList)
-
-       },
-       fail: err => {
-         console.error('query error：', err)
-       }
-     })
+     
 
     //  wx.cloud.callFunction({            //调用云函数recommand
     //    name: 'recommand',

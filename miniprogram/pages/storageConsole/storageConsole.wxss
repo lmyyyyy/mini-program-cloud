@@ -1,6 +1,0 @@
-/* pages/storageConsole/storageConsole.wxss */
-
-
-.black {
-  color: black;
-}

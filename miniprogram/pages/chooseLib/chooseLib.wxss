@@ -1,6 +1,0 @@
-/* pages/chooseLib/chooseLib.wxss */
-
-
-.black {
-  color: black;
-}
