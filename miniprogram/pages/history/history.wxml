@@ -1,0 +1,30 @@
+<!--pages/history/history.wxml-->
+
+<!-- 用户 openid   新加的-->
+<!-- <view class="userinfo">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
+    <view>
+      <button class="userinfo-nickname" bindtap="onGetOpenid">点击获取 openid</button>
+    </view>
+  </view> -->
+<!-- 新加的 -->
+
+
+<scroll-view scroll-y class="container">
+  <image class="logo-index" src="/imgs/logo-index.png" />
+  <view class="history-list">
+    <view class="header">
+      <text class="title">翻译历史</text>
+      <text bindtap='onClearHistory' class="iconfont icon-close">清除历史记录</text>
+    </view>
+    <view class="item" wx:for="{{history}}" wx:key="index" bindtap='onTapItem' data-query="{{item.query}}" data-langId="{{item.langIndex}}">
+      <view class="query">{{item.query}}</view>
+      <view class="result">{{item.result}}</view>
+    </view>
+  </view>
+</scroll-view>

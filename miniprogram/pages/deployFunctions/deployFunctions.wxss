@@ -1,0 +1,6 @@
+/* pages/deployFunctions/deployFunctions.wxss */
+
+
+.black {
+  color: black;
+}

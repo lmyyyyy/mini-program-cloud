@@ -1,0 +1,9 @@
+/* pages/databaseGuide/databaseGuide.wxss */
+
+
+.guide .counter {
+  margin-top: 50rpx;
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+}
