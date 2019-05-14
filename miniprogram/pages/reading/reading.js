@@ -8,16 +8,16 @@ Page({
 
 
   data: {
-    queryList: [],        //查询历史列表
-    essayList: []         //文章列表
+    queryList: [], //查询历史列表
+    essayList: [] //文章列表
   },
 
 
   onLoad() {
-    
+
     console.log('reading: ' + app.globalData.openid)
 
-    const db = wx.cloud.database()               //查询搜索历史
+    const db = wx.cloud.database() //查询搜索历史
     db.collection('users').where({
       _openid: app.globalData.openid
     }).get({
@@ -29,33 +29,28 @@ Page({
         this.setData({
           queryList: tempQueryList
         })
-        recommand(this.data.queryList)
+
+        //调用推荐函数
+        recommand(this.data.queryList).then(res => {
+          this.setData({
+            'essayList': res.data
+          })
+          console.log(this.data.essayList)
+        })
 
       },
       fail: err => {
         console.error('query error：', err)
       }
     })
-    
+
     // console.log(app.globalData.dicts['exhaustible'])
-   },
+  },
 
 
 
-   onShow() {
-     
+  onShow() {
 
-    //  wx.cloud.callFunction({            //调用云函数recommand
-    //    name: 'recommand',
-    //    data: {},
-    //    success: res => {
-    //      console.log('[recommand] success: ', res)
-    //    },
-    //    fail: err => {
-    //      console.error('[recommand] error: ', err)
-    //    }
-    //  })
-
-   }
+  }
 
 })
