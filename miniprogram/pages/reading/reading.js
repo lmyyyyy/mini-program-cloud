@@ -33,10 +33,12 @@ Page({
         //调用推荐函数
         recommand(this.data.queryList).then(res => {
           this.setData({
-            'essayList': res.data
+            'essayList': res
           })
           console.log(this.data.essayList)
         })
+
+        // recommand(this.data.queryList)
 
       },
       fail: err => {
@@ -46,8 +48,6 @@ Page({
 
     // console.log(app.globalData.dicts['exhaustible'])
   },
-
-
 
   onShow() {
 
