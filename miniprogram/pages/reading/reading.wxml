@@ -25,11 +25,11 @@
                                 <text class="essay-title">{{essay.title}}</text>
                                 <!-- <text class="essay-date">{{essay.date}}</text> -->
                             </view>
-                            <view class="casts">
+                            <!-- <view class="casts">
                                 <block wx:for-items="{{essay.grade}}" wx:for-item="grade" wx:key="">
                                     <text class="grade">{{grade}}</text>
                                 </block>
-                            </view>
+                            </view> -->
                         </view>
                     </view>
                 </block>
@@ -42,7 +42,7 @@
                     </block>
                     <block wx:else>
                         <view class="load-content">
-                            <text>没有更多内容了</text>
+                            <text>玩命加载中</text>
                         </view>
                     </block>
                 </view>

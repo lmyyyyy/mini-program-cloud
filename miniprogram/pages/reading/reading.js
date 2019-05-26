@@ -31,49 +31,59 @@ Page({
         //调用推荐函数
         recommand(this.data.queryList).then(res => {
           this.setData({
-            essayList: res
+            essayList: res,
           })
+          app.globalData.essList = res
           console.log(this.data.essayList)
         })
       },
       fail: err => {
         console.error('query error：', err)
         ///////////////////////////
-          this.setData({
-              essayList: [{
-                  "id": 1,
-                  "title": "ABCD",
-                  "grade": ["CET-4"]
-              }, {
-                  "id": 2,
-                  "title": "DEFG",
-                  "grade": ["雅思", "考研"]
-              }, {
-                  "id": 3,
-                  "title": "DEFG",
-                  "grade": ["雅思", "CET-6"]
-              }, {
-                  "id": 4,
-                  "title": "DEFG",
-                  "grade": ["考研"]
-              }, {
-                  "id": 5,
-                  "title": "DEFG",
-                  "grade": ["CET-6", "考研"]
-              }]
-          });
+        this.setData({
+          essayList: [{
+            "id": 1,
+            "title": "ABCD",
+            "grade": ["CET-4"]
+          }, {
+            "id": 2,
+            "title": "DEFG",
+            "grade": ["雅思", "考研"]
+          }, {
+            "id": 3,
+            "title": "DEFG",
+            "grade": ["雅思", "CET-6"]
+          }, {
+            "id": 4,
+            "title": "DEFG",
+            "grade": ["考研"]
+          }, {
+            "id": 5,
+            "title": "DEFG",
+            "grade": ["CET-6", "考研"]
+          }]
+        });
         /////////////////////////////
       }
     })
   },
 
-  viewDetail: function (e) {
+  viewDetail: function(e) {
     let langObj = e.currentTarget.dataset
     console.log(langObj)
     // wx.switchTab({ url: '/pages/reading/essay_detail/essay_detail' })  //跳转页面
 
-      wx.navigateTo({
-          url: '/pages/reading/essay_detail/essay_detail',
-      })
+    var essay;
+    for (let i = 0; i < this.data.essayList.length; i++) {
+      if (this.data.essayList[i].title == langObj.title) {
+        essay = this.data.essayList[i];
+      }
+    }
+    console.log(essay)
+    wx.navigateTo({
+      // url: '/pages/reading/essay_detail/essay_detail?essay=' + JSON.stringify(essay)
+
+      url: '/pages/reading/essay_detail/essay_detail?essayID=' + essay._id
+    })
   }
 })

@@ -1,81 +1,44 @@
 // pages/reading/essay_detail/essay_detail.js
+
+const app = getApp()
+
 Page({
 
-    /**
-     * 页面的初始数据
-     */
-    data: {
-        essay: null
-    },
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    essay: null
+  },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad: function(options) {
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function(query) {
+    // let essay = JSON.parse(query.essay)
 
-        // 传来的数据展示
+    let essayID = query.essayID
+    console.log(essayID)
+
+    // 找
+    let essayList = app.globalData.essList
+    for (let i = 0; i < essayList.length; i++) {
+      if (essayList[i]._id == essayID) {
+        let essay = essayList[i]
+        if (essayList[i].degree == 1) {
+          essay.grade = '四级'
+        } else if (essayList[i].degree == 2) {
+          essay.grade = '六级'
+        } else if (essayList[i].degree == 3) {
+          essay.grade = '雅思'
+        }
+
         this.setData({
-            essay: {
-                title: "震惊！！竟然是这样...",
-                grade: ["雅思", "CET-6"],
-                content: "文章详情",
-            }
+          essay: essay
         })
-    },
+      }
+    }
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function() {
 
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function() {
-
-    },
-
-    // onTurnBack: function() {
-    //     wx.navigateBack(1)
-    //     //     {
-    //     //     delta: 1
-    //     // })
-    // }
+  }
 })

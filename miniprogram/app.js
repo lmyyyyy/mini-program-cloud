@@ -16,6 +16,7 @@ App({
     curLang: {},
     dicts:{},
     openid:'',
+    essList:{},
     langList: [
       {
         'chs': '英文',

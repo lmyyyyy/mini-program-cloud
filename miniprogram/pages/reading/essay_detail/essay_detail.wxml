@@ -10,9 +10,9 @@
     <view class="divline" />
     <view class="essay">
         <view class="essay-title">{{essay.title}}</view>
-        <block wx:for-items="{{essay.grade}}" wx:for-item="grade" wx:key="">
-            <text class="essay-grade">{{grade}}</text>
-        </block>
-        <view class="essay-detail">{{essay.content}}</view>
+        <!-- <block wx:for-items="{{essay.grade}}" wx:for-item="grade" wx:key=""> -->
+            <text class="essay-grade">{{essay.grade}}</text>
+        <!-- </block> -->
+        <view class="essay-detail">{{essay.contnet}}</view>
     </view>
 </scroll-view>

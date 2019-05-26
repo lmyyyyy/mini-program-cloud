@@ -20,7 +20,7 @@
 /* ////////////////////////// */
 
 .essay-item {
-    background: rgba(224, 230, 243, 0.815);
+    background: rgba(247, 249, 253, 0.815);
     border-radius: 10rpx;
     width: 95%;
     height: 200rpx;
