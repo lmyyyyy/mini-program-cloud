@@ -1,50 +1,52 @@
 <!--pages/reading/reading.wxml-->
 
 <scroll-view scroll-y class="container">
-  <view class="logo-container">
-    <image class="logo" src="/imgs/logo.png"></image>
-  </view>
-  <view class="divline" />
-  <view class="essay-list">
-    <block wx:if="{{showLoading}}">
-      <view class="page-loading">
-        <text class="weui-loading" />
-        <text class="loading-text">玩命加载中</text>
-      </view>
-    </block>
-    <block wx:else>
-      <!--  class="container essay-list" -->
-      <scroll-view style="height: 100%;" scroll-y="true" bindscroll="scroll" bindscrolltolower="scrolltolower">
-        <block wx:for-items="{{essayList}}" wx:for-item="essay" wx:key="essay.id">
-          <view class="essay-item" bindtap="viewDetail" data-id="{{essay.id}}" data-title="{{essay.title}}">
-            <view class="essay-info">
-              <view>
-                <text class="essay-title">{{essay.title}}</text>
-                <text class="essay-date">{{essay.date}}</text>
-              </view>
-              <view class="casts">
-                <!-- <text>分类</text> -->
-                <block wx:for-items="{{essay.casts}}" wx:for-item="cast" wx:key="">
-                  <text class="grade">{{cast.grade}}</text>
-                </block>
-              </view>
+    <view class="logo-container">
+        <image class="logo" src="/imgs/logo.png"></image>
+    </view>
+    <view class="divline" />
+    <view class="essay-list">
+        <block wx:if="{{showLoading}}">
+            <view class="page-loading">
+                <text class="weui-loading" />
+                <text class="loading-text">玩命加载中</text>
             </view>
-          </view>
         </block>
-        <view class="load-more-wrap">
-          <block wx:if="{{hasMore}}">
-            <view class="load-content">
-              <text class="weui-loading" />
-              <text class="loading-text">玩命加载中</text>
-            </view>
-          </block>
-          <block wx:else>
-            <view class="load-content">
-              <text>没有更多内容了</text>
-            </view>
-          </block>
-        </view>
-      </scroll-view>
-    </block>
-  </view>
+        <block wx:else>
+            <!--  class="container essay-list" -->
+            <scroll-view style="height: 100%;" scroll-y="true" bindscroll="scroll" bindscrolltolower="scrolltolower">
+                <block wx:for-items="{{essayList}}" wx:for-item="essay" wx:key="essay.id">
+                    <view class="essay-item" bindtap="viewDetail" data-id="{{essay.id}}" data-title="{{essay.title}}">
+                        <!-- <view class="essay-image">
+                    <image src="{{essay.images.medium}}"></image>
+                    </view> -->
+                        <view class="essay-info">
+                            <view>
+                                <text class="essay-title">{{essay.title}}</text>
+                                <!-- <text class="essay-date">{{essay.date}}</text> -->
+                            </view>
+                            <view class="casts">
+                                <block wx:for-items="{{essay.grade}}" wx:for-item="grade" wx:key="">
+                                    <text class="grade">{{grade}}</text>
+                                </block>
+                            </view>
+                        </view>
+                    </view>
+                </block>
+                <view class="load-more-wrap">
+                    <block wx:if="{{hasMore}}">
+                        <view class="load-content">
+                            <text class="weui-loading" />
+                            <text class="loading-text">玩命加载中</text>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view class="load-content">
+                            <text>没有更多内容了</text>
+                        </view>
+                    </block>
+                </view>
+            </scroll-view>
+        </block>
+    </view>
 </scroll-view>
