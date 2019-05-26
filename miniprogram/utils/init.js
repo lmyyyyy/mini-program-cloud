@@ -61,7 +61,7 @@ function getEssays(callback) {
 
 
   wx.cloud.downloadFile({
-    fileID: 'cloud://lmy-cloud-1007.6c6d-lmy-cloud-1007/title.txt', // 文件 ID
+    fileID: 'cloud://lmy-cloud-1007.6c6d-lmy-cloud-1007/title.txt', // 标题
     success: res => {
       // 返回临时文件路径
       var file_path = res.tempFilePath;
@@ -74,7 +74,7 @@ function getEssays(callback) {
           titleList = titles.split("\n");
 
           wx.cloud.downloadFile({ //再次下载等级
-            fileID: 'cloud://lmy-cloud-1007.6c6d-lmy-cloud-1007/degree.txt', // 文件 ID
+            fileID: 'cloud://lmy-cloud-1007.6c6d-lmy-cloud-1007/degree.txt', // 等级
             success: res => {
               // 返回临时文件路径
               var file_p = res.tempFilePath;
@@ -121,7 +121,7 @@ function get_content() { //初始化文章
 
         for (let k = 0; k < 50; k++) {
           wx.cloud.downloadFile({
-            fileID: 'cloud://lmy-cloud-1007.6c6d-lmy-cloud-1007/articles/essay' + k + '.txt', // 文件 ID
+            fileID: 'cloud://lmy-cloud-1007.6c6d-lmy-cloud-1007/articles/essay' + k + '.txt', // 文章内容
             success: res => {
               // 返回临时文件路径
               var file_pa = res.tempFilePath;

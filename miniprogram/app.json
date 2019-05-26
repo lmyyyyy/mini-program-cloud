@@ -3,14 +3,14 @@
     "pages/index/index",
     "pages/change/change",
     "pages/reading/reading",
-    "pages/history/history"
+    "pages/history/history",
+    "pages/reading/essay_detail/essay_detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#ffffff",
-    "navigationBarTitleText": "小翻译"
+    "backgroundColor": "#ffffff"
   },
   "tabBar": {
     "borderStyle": "white",

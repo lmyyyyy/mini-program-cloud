@@ -1,9 +1,6 @@
 //index.js
-//获取应用实例
-
 var translator = require('../../utils/api.js');
 var init = require('../../utils/init.js');
-
 const app = getApp()
 
 Page({
@@ -11,7 +8,7 @@ Page({
     query: '', //输入文字
     hideClearIcon: true, //close icon显现状态
     result: [], //译文结果
-    curLang: {} //当前语言
+    curLang: {}, //当前语言
   },
 
 
@@ -24,6 +21,12 @@ Page({
         traceUser: true,
       })
     }
+
+    wx.showShareMenu({
+      withShareTicket: true,
+      success: function () { },
+      fail: function () { }
+    })
 
     wx.cloud.callFunction({ //调用云函数获取openid
       name: 'login',
@@ -96,7 +99,7 @@ Page({
     //翻译
     if (!this.data.query) return //空文本的时候不进行翻译
 
-    translator(this.data.query, 'zh', this.data.curLang.lang).then(res => {
+    translator(this.data.query, 'auto', this.data.curLang.lang).then(res => {
       //调用 api.js 里面的 Promise
 
       this.setData({
@@ -128,7 +131,23 @@ Page({
       history.length = history.length > 10 ? 10 : history.length
       wx.setStorageSync('history', history)
     })
-  }
+  },
 
+
+  onShareAppMessage: function () {
+    return {
+      title: '快译读',
+      path: 'pages/index/index',
+      success: function (res) {
+        // 转发成功
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
+
+  }
 
 })

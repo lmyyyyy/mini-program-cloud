@@ -15,7 +15,7 @@ App({
   globalData: {
     curLang: {},
     dicts:{},
-    openid:'oNiMs5HbsUrjWxQu40DJKA6-o7zI',
+    openid:'',
     langList: [
       {
         'chs': '英文',
@@ -43,40 +43,57 @@ App({
         "index": 4
       },
       {
-        'chs': '德语',
-        'lang': 'de',
-        "index": 5
-      },
-      {
-        'chs': '俄语',
-        'lang': 'ru',
-        "index": 6
-      },
-      {
-        'chs': '泰语',
-        'lang': 'th',
-        "index": 7
-      },
-      {
         'chs': '西班牙语',
         'lang': 'es',
-        "index": 8
-      },
-      {
-        'chs': '阿拉伯语',
-        'lang': 'ara',
-        "index": 9
+        "index": 5
       },
       {
         'chs': '意大利语',
         'lang': 'it',
-        "index": 10
+        "index": 6
+      },
+      {
+        'chs': '德语',
+        'lang': 'de',
+        "index": 7
+      },
+      {
+        'chs': '土耳其语',
+        'lang': 'tr',
+        "index": 8
+      },
+      {
+        'chs': '俄语',
+        'lang': 'ru',
+        "index": 9
       },
       {
         'chs': '葡萄牙语',
         'lang': 'pt',
+        "index": 10
+      },
+      {
+        'chs': '越南语',
+        'lang': 'vi',
         "index": 11
-      }
+      },
+      {
+        'chs': '印度尼西亚语',
+        'lang': 'id',
+        "index": 12
+      },
+      {
+        'chs': '泰语',
+        'lang': 'th',
+        "index": 13
+      },
+      {
+        'chs': '自动识别',
+        'lang': 'auto',
+        "index": 14
+      },
+      
+      
     ]
   }
 })

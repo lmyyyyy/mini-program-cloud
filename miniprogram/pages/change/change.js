@@ -1,6 +1,6 @@
 //logs.js
 
-const util = require('../../utils/util.js')
+// const util = require('../../utils/util.js')
 const app = getApp()
 Page({
   data: {
@@ -12,7 +12,7 @@ Page({
   },
   onTapItem: function (e) {
     let langObj = e.currentTarget.dataset
-    wx.setStorageSync('language', langObj)
+    wx.setStorageSync('tarStorage', langObj)
     this.setData({ 'curLang': langObj })
     app.globalData.curLang = langObj
     wx.switchTab({ url: '/pages/index/index' })  //跳转页面

@@ -69,6 +69,8 @@ function get_numbers() {
       }
       uniqueUserWords = Array.from(new Set(userWords)); //去重
     }
+
+    // console.log(uniqueUserWords)
     var l1 = 0,
       l2 = 0,
       l3 = 0; //统计用户搜索历史中不同级别单词数目
@@ -76,16 +78,15 @@ function get_numbers() {
       if (app.globalData.dicts[uniqueUserWords[k]]) {
         if (app.globalData.dicts[uniqueUserWords[k]] == '1') {
           l1++;
-        } else if (dictWords[uniqueUserWords[k]] == '2') {
+        } else if (app.globalData.dicts[uniqueUserWords[k]] == '2') {
           l2++;
-        } else if (dictWords[uniqueUserWords[k]] == '3') {
+        } else if (app.globalData.dicts[uniqueUserWords[k]] == '3') {
           l3++;
         } else {
           console.log('some new tags');
         }
       }
     }
-    // console.log(l1 + ' ' + l2 + ' ' + l3)
     resolve([l1, l2, l3])
   });
   return p;
@@ -96,48 +97,58 @@ function get_essays([l1, l2, l3]) {
 
   var p = new Promise((resolve, reject) => {
 
-    console.log(l1 + ' ' + l2 + ' ' + l3)
+    // console.log(l1 + ' ' + l2 + ' ' + l3)
     var total = l1 + l2 + l3;
-    var d1 = l1 / total * 10;
-    var d2 = l2 / total * 20;
-    var d3 = l3 / total * 20;
+    var d1 = parseInt(l1 / total * 10);
+    var d2 = parseInt(l2 / total * 20);
+    var d3 = parseInt(l3 / total * 20);
     console.log(d1 + ' ' + d2 + ' ' + d3)
+    // console.log(essaylist_1.length + ' ' + essaylist_2.length + ' ' + essaylist_3.length)
 
-    console.log(essaylist_1.length + ' ' + essaylist_2.length + ' ' + essaylist_3.length)
+    var i, count1, count2, count3;
+
+//////////////////////////////////////////////////////////////////////////
 
     var temp_1 = parseInt((Math.random()) * (essaylist_1.length))
-    console.log('original: ' + temp_1)
+    // console.log('original: ' + temp_1)
     if (essaylist_1.length - temp_1 < d1) {
       temp_1 = 0;
     }
-    console.log('after:' + temp_1)
+    // console.log('after:' + temp_1)
 
-    for (let i = temp_1; i < d1; i++) {
+    for (i = temp_1, count1 = 0; i < essaylist_1.length, count1 < d1; i++, count1++) {
       essaylist.push(essaylist_1[i])
     }
 
+//////////////////////////////////////////////////////////////////////////
+
     var temp_2 = parseInt((Math.random()) * (essaylist_2.length))
-    console.log('original: ' + temp_2)
+    // console.log('original: ' + temp_2)
     if (essaylist_2.length - temp_2 < d2) {
       temp_2 = 0;
     }
-    console.log('after: ' + temp_2)
+    // console.log('after: ' + temp_2)
 
-    for (let i = temp_2; i < d2; i++) {
+    for (i = temp_2, count2 = 0; i < essaylist_2.length, count2 < d2; i++, count2++) {
       essaylist.push(essaylist_2[i])
     }
 
+///////////////////////////////////////////////////////////////////////////
+
     var temp_3 = parseInt((Math.random()) * (essaylist_3.length))
-    console.log('original: ' + temp_3)
+    // console.log('original: ' + temp_3)
     if (essaylist_3.length - temp_3 < d3) {
       temp_3 = 0;
     }
-    console.log('after: '+temp_3)
+    // console.log('after: '+temp_3)
 
-    for (let i = temp_3; i < d3; i++) {
+    for (i = temp_3, count3 = 0; i < essaylist_3.length, count3 < d3; i++, count3++) {
       essaylist.push(essaylist_3[i])
     }
-    console.log(essaylist)
+
+  /////////////////////////////////////////////////////////////////////////
+
+    // console.log(essaylist)
     resolve(essaylist)
   });
   return p;

@@ -17,29 +17,11 @@
       <scroll-view style="height: 100%;" scroll-y="true" bindscroll="scroll" bindscrolltolower="scrolltolower">
         <block wx:for-items="{{essayList}}" wx:for-item="essay" wx:key="essay.id">
           <view class="essay-item" bindtap="viewDetail" data-id="{{essay.id}}" data-title="{{essay.title}}">
-            <!-- <view class="essay-image">
-                    <image src="{{essay.images.medium}}"></image>
-                    </view> -->
             <view class="essay-info">
               <view>
                 <text class="essay-title">{{essay.title}}</text>
                 <text class="essay-date">{{essay.date}}</text>
               </view>
-              <!-- <view class="essay-rating">
-            <block wx:if="{{essay.rating.average > 0}}">
-              <text class="label">评分</text>
-              <text class="rating">{{essay.rating.average}}</text>
-            </block>
-            <block wx:else>
-              <text class="label">暂无评分</text>
-            </block>
-          </view>
-          <view class="directors">
-            <text class="label">导演</text>
-            <block wx:for-items="{{essay.directors}}" wx:for-item="director">
-              <text class="grade">{{director.grade}}</text>
-            </block>
-          </view> -->
               <view class="casts">
                 <!-- <text>分类</text> -->
                 <block wx:for-items="{{essay.casts}}" wx:for-item="cast" wx:key="">

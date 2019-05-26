@@ -3,9 +3,6 @@ var md5 = require('md5')
 const URL = 'https://api.ai.qq.com/fcgi-bin/nlp/nlp_texttranslate';
 const APP_KEY = 'LpCW2DKkY2lh28SC';
 const APP_ID = 2114106434;
-//const APP_ID = 'wx246e835bbbe7d847';
-//const APP_KEY = '24c7f5ac1a7424e18e6ae46512c1614a'
-
 
 var ksort = function (arys) {
   //先用Object内置类的keys方法获取要排序对象的属性名，再利用Array原型上的sort方法对获取的属性名进行排序，newkey是一个数组
@@ -40,7 +37,7 @@ var getReqSign = function (params, appkey) {
 
   // 3. 拼接app_key
   str += 'app_key=' + appkey;
-  // console.log("str:"+str);
+  console.log("str:"+str);
 
   // 4. MD5运算+转换大写，得到请求签名
   let sign = md5(str || '').toUpperCase();
