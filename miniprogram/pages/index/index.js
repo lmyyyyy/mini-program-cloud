@@ -135,19 +135,18 @@ Page({
 
 
   onShareAppMessage: function () {
+    
+    console.log("转发")
     return {
       title: '快译读',
-      path: 'pages/index/index',
-      success: function (res) {
-        // 转发成功
-        console.log("转发成功:" + JSON.stringify(res));
+      path: '/pages/index/index',
+      success: (res) => {
+        console.log("转发成功", res);
       },
-      fail: function (res) {
-        // 转发失败
-        console.log("转发失败:" + JSON.stringify(res));
+      fail: (res) => {
+        console.log("转发失败", res);
       }
     }
-
   }
 
 })
