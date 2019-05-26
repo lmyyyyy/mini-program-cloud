@@ -47,7 +47,7 @@
 }
 
 .input-area .text-area {
-  min-height: 80rpx;
+  min-height: 300rpx;
   padding: 30rpx;
   margin: 20rpx;
   border: 1px solid #c7cee0;

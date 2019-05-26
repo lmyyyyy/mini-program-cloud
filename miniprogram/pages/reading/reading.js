@@ -35,10 +35,34 @@ Page({
           })
           console.log(this.data.essayList)
         })
-
       },
       fail: err => {
         console.error('query error：', err)
+        ///////////////////////////
+          this.setData({
+              essayList: [{
+                  "id": 1,
+                  "title": "ABCD",
+                  "grade": ["CET-4"]
+              }, {
+                  "id": 2,
+                  "title": "DEFG",
+                  "grade": ["雅思", "考研"]
+              }, {
+                  "id": 3,
+                  "title": "DEFG",
+                  "grade": ["雅思", "CET-6"]
+              }, {
+                  "id": 4,
+                  "title": "DEFG",
+                  "grade": ["考研"]
+              }, {
+                  "id": 5,
+                  "title": "DEFG",
+                  "grade": ["CET-6", "考研"]
+              }]
+          });
+        /////////////////////////////
       }
     })
   },
@@ -46,8 +70,10 @@ Page({
   viewDetail: function (e) {
     let langObj = e.currentTarget.dataset
     console.log(langObj)
-    wx.switchTab({ url: '/pages/reading/essay_detail/essay_detail' })  //跳转页面
+    // wx.switchTab({ url: '/pages/reading/essay_detail/essay_detail' })  //跳转页面
+
+      wx.navigateTo({
+          url: '/pages/reading/essay_detail/essay_detail',
+      })
   }
-
-
 })
